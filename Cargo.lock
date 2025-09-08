@@ -845,12 +845,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "android-tzdata"
-version = "0.1.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "e999941b234f3131b00bc13c22d06e8c5ff726d1b6318ac7eb276997bbb4fef0"
-
-[[package]]
 name = "android_system_properties"
 version = "0.1.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1218,7 +1212,7 @@ dependencies = [
 [[package]]
 name = "arm"
 version = "0.4.0"
-source = "git+https://github.com/anoma/arm-risc0?branch=m1dnight%2Fencoders-decoders-new-structs#7e998ae3e07da2d129dc079158af819c74e91e6f"
+source = "git+https://github.com/anoma/arm-risc0?branch=m1dnight%2Fencoders-decoders-new-structs#a971d32a302087d6f941ccfc9f1aac53b3af505e"
 dependencies = [
  "aes-gcm",
  "alloy-primitives",
@@ -1621,15 +1615,14 @@ checksum = "613afe47fcd5fac7ccf1db93babcb082c5994d996f20b8b159f2ad1658eb5724"
 
 [[package]]
 name = "chrono"
-version = "0.4.41"
+version = "0.4.42"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "c469d952047f47f91b68d1cba3f10d63c11d73e4636f24f08daf0278abf01c4d"
+checksum = "145052bdd345b87320e369255277e3fb5152762ad123a901ef5c262dd38fe8d2"
 dependencies = [
- "android-tzdata",
  "iana-time-zone",
  "num-traits",
  "serde",
- "windows-link 0.1.3",
+ "windows-link 0.2.0",
 ]
 
 [[package]]
@@ -1726,6 +1719,7 @@ dependencies = [
  "counter_witness",
  "evm_protocol_adapter_bindings",
  "hex",
+ "k256",
  "lazy_static",
  "rand 0.8.5",
  "risc0-zkvm",
@@ -1748,14 +1742,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "counter_logic_circuit"
-version = "0.1.0"
-dependencies = [
- "counter_methods",
- "risc0-zkvm",
-]
-
-[[package]]
 name = "counter_methods"
 version = "0.1.0"
 dependencies = [
@@ -1766,13 +1752,15 @@ dependencies = [
 name = "counter_nif"
 version = "0.1.0"
 dependencies = [
- "alloy",
  "arm",
  "bincode",
  "counter_library",
- "counter_logic_circuit",
  "counter_witness",
- "rand 0.9.2",
+ "evm_protocol_adapter_bindings",
+ "hex",
+ "lazy_static",
+ "rand 0.8.5",
+ "risc0-zkvm",
  "rustler",
  "serde",
  "tokio",
@@ -3265,6 +3253,7 @@ dependencies = [
  "once_cell",
  "serdect",
  "sha2",
+ "signature",
 ]
 
 [[package]]
@@ -5193,9 +5182,9 @@ dependencies = [
 
 [[package]]
 name = "security-framework-sys"
-version = "2.14.0"
+version = "2.15.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "49db231d56a190491cb4aeda9527f1ad45345af50b0851622a7adb8c03b01c32"
+checksum = "cc1f0cbffaac4852523ce30d8bd3c5cdc873501d96ff467ca09b6767bb8cd5c0"
 dependencies = [
  "core-foundation-sys",
  "libc",

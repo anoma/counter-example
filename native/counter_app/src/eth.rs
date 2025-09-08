@@ -9,10 +9,7 @@ pub async fn submit(transaction: Transaction) -> bool {
     let result = protocol_adapter().execute(tx).send().await;
 
     match result {
-        Ok(transactionbuilder) => {
-            Some(transactionbuilder);
-            true
-        }
+        Ok(_transactionbuilder) => true,
         Err(err) => {
             println!("{:?}", err);
             let decoded_err = err.as_decoded_interface_error::<ProtocolAdapterErrors>();
@@ -20,4 +17,4 @@ pub async fn submit(transaction: Transaction) -> bool {
             false
         }
     }
-}  
+}

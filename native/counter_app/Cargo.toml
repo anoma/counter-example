@@ -7,10 +7,11 @@ edition = "2021"
 serde = "1.0"
 counter_witness = { path = "../counter_witness" }
 counter_library = { path = "../counter_library"}
-arm = { git = "https://github.com/anoma/arm-risc0", branch = "m1dnight/encoders-decoders-new-structs",  default-features = false, features = ["transaction", "bonsai"] }
+arm = { git = "https://github.com/anoma/arm-risc0", branch = "m1dnight/encoders-decoders-new-structs",  default-features = false, features = ["transaction", "bonsai", "groth16_prover"] }
 rand = "0.8"
 risc0-zkvm = { version = "3.0.3", default-features = false, features = ["std", "unstable"] }
 lazy_static = "1.5.0"
 hex = "0.4"
 evm_protocol_adapter_bindings = { git = "https://github.com/anoma/evm-protocol-adapter", branch = "feature/crate"}
 tokio = "1.47.1"
+k256 = "0.13.3"

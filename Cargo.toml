@@ -1,7 +1,7 @@
 [workspace]
 resolver = "2"
 
-members = [ "native/counter_app","native/counter_nif", "native/counter_app"]
+members = [ "native/counter_app","native/counter_nif", "native/counter_app", "native/counter_logic_circuit/counter_methods"]
 
 # Always optimize; building and running the guest takes much longer without optimization.
 [profile.dev]
