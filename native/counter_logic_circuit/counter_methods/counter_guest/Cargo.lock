@@ -553,8 +553,8 @@ dependencies = [
 
 [[package]]
 name = "arm"
-version = "0.5.0"
-source = "git+https://github.com/anoma/arm-risc0?branch=m1dnight%2Fencoding-decoding-keypair#eae10aa8fb37784dd27f7d81f970bc513057f11f"
+version = "0.6.1"
+source = "git+https://github.com/anoma/arm-risc0?branch=jurevans%2Fpatch-keys-0.6.1#af43e5d659d3b5e0651c481b4aad137e8451ec44"
 dependencies = [
  "aes-gcm",
  "alloy-primitives",

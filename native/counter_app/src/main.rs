@@ -69,6 +69,7 @@ fn create_transaction(discovery_pk: AffinePoint, discovery_sk: SecretKey) -> Tra
             .blob,
     );
 
+    println!("[create_transaction]: discovery_ciphertext: {:?}", discovery_ciphertext);
     let decipher_result = discovery_ciphertext.decrypt(&discovery_sk);
     match decipher_result {
         Ok(_) => {
@@ -76,6 +77,7 @@ fn create_transaction(discovery_pk: AffinePoint, discovery_sk: SecretKey) -> Tra
         }
         Err(_) => {
             println!("Decryption failed, exiting");
+            std::process::exit(1);
         }
     }
 
@@ -138,35 +140,33 @@ fn recover_keys(discovery_sk_str: String, discovery_pk_str: String) -> (SecretKe
 }
 
 fn main() {
-    let x = INITIAL_ROOT.as_words().to_vec();
-    let y = words_to_bytes(x.as_slice());
-    println!("x: {:?} {:?}", x, y);
-    // let (discovery_sk, discovery_pk) = random_keypair();
-    // let (discovery_sk_str, discovery_pk_str) = print_keys(discovery_sk.clone(), discovery_pk);
-    // let (discovery_sk_rec, discovery_pk_rec) = recover_keys(discovery_sk_str, discovery_pk_str);
-    // print_keys(discovery_sk_rec, discovery_pk_rec);
-    //
-    // let thing_to_encrypt: Vec<u8> = (0..66).map(|_| random::<u8>()).collect();
-    //
-    // let nonce_bytes: Vec<u8> = (0..12).map(|_| random::<u8>()).collect();
-    // let nonce: [u8; 12] = nonce_bytes.try_into().unwrap();
-    //
-    // let cipher_text : Ciphertext = Ciphertext::encrypt(&thing_to_encrypt, &discovery_pk, &discovery_sk, nonce);
-    //
-    // let decipher_result = cipher_text.decrypt(&discovery_sk);
-    // match decipher_result {
-    //     Ok(_) => {
-    //         println!("deciphered the discovery payload");
-    //     }
-    //     Err(_) => {
-    //         println!("Decryption failed, exiting");
-    //     }
-    // }
-    //
-    //
-    //
-    // // let tx = create_transaction(discovery_pk, discovery_sk);
-    // // submit_transaction(tx);
+    let (discovery_sk, discovery_pk) = random_keypair();
+    let (discovery_sk_str, discovery_pk_str) = print_keys(discovery_sk.clone(), discovery_pk);
+    let (discovery_sk_rec, discovery_pk_rec) = recover_keys(discovery_sk_str.clone(), discovery_pk_str.clone());
+    print_keys(discovery_sk_rec, discovery_pk_rec);
+    
+    let thing_to_encrypt: Vec<u8> = (0..66).map(|_| random::<u8>()).collect();
+    
+    let nonce_bytes: Vec<u8> = (0..12).map(|_| random::<u8>()).collect();
+    let nonce: [u8; 12] = nonce_bytes.try_into().unwrap();
+    
+    let cipher_text : Ciphertext = Ciphertext::encrypt(&thing_to_encrypt, &discovery_pk, &discovery_sk, nonce);
+    
+    let decipher_result = cipher_text.decrypt(&discovery_sk);
+    match decipher_result {
+        Ok(_) => {
+            println!("deciphered the discovery payload");
+        }
+        Err(_) => {
+            println!("Decryption failed, exiting");
+            return;
+        }
+    }
+    
+    let tx = create_transaction(discovery_pk, discovery_sk);
+    
+    println!("tx: {:?}", tx);
+    submit_transaction(tx);
 
     println!("transaction generated");
 }

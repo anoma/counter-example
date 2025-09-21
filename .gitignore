@@ -23,3 +23,5 @@ counter_example-*.tar
 /tmp/
 
 /priv/native/
+
+/target/
