@@ -560,7 +560,7 @@ dependencies = [
 [[package]]
 name = "arm"
 version = "0.2.0"
-source = "git+https://github.com/anoma/arm-risc0?branch=m1dnight%2Fencoders-decoders-new-structs#bdb91cde52a3c06104b84b7da6602847df47653c"
+source = "git+https://github.com/anoma/arm-risc0?rev=4b16d95629a6ddd3a6c0477a5c2c05c899a6b3a5#4b16d95629a6ddd3a6c0477a5c2c05c899a6b3a5"
 dependencies = [
  "aes-gcm",
  "alloy-primitives",

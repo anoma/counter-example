@@ -10,3 +10,6 @@ opt-level = 3
 [profile.release]
 debug = 1
 lto = true
+
+[patch.'https://github.com/anoma/arm-risc0']
+arm = { git = "https://github.com/anoma/arm-risc0?rev=c303dd23d123e9c09c752c05689678e4eb210606" }

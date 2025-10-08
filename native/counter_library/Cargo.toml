@@ -5,7 +5,7 @@ edition = "2021"
 
 [dependencies]
 risc0-zkvm = "3.0.3"
-arm = { git = "https://github.com/anoma/arm-risc0", branch = "m1dnight/encoders-decoders-new-structs", default-features = true }
+arm = { git = "https://github.com/anoma/arm-risc0", rev = "4b16d95629a6ddd3a6c0477a5c2c05c899a6b3a5", default-features = true }
 counter_witness = { path = "../counter_witness"}
 serde = { version = "1.0.219", features = ["derive"] }
 lazy_static = "1.5.0"
